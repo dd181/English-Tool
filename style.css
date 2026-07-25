@@ -1,6 +1,6 @@
 .sentenceBox {
 
-    height:60vh;
+    min-height:500px;
 
     border:1px solid #ddd;
 
