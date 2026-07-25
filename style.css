@@ -20,7 +20,7 @@
 
     line-height:1.8;
 
-    height:60vh;
+    height:100%;
 
     overflow-y:auto;
 
@@ -102,6 +102,4 @@ button{
     margin-top:15px;
 
 }
-#sentence {
-    height:300px;
-}
+
