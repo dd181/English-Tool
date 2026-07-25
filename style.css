@@ -1,12 +1,27 @@
-#sentence {
+.sentenceBox {
 
-    margin:0;
+    height:60vh;
+
+    border:1px solid #ddd;
+
+    border-radius:8px;
+
+    margin-bottom:20px;
+
+    overflow:hidden;
+
+}
+
+
+#sentence {
 
     height:100%;
 
     overflow-y:auto;
 
     box-sizing:border-box;
+
+    margin:0;
 
     padding:20px;
 
@@ -58,19 +73,6 @@ h1{
 
 }
 
-.sentenceBox{
-
-    height:60vh;
-
-    border:1px solid #ddd;
-
-    border-radius:8px;
-
-    margin-bottom:20px;
-
-    overflow:hidden;
-
-}
 
 
 .buttons{
