@@ -6,7 +6,7 @@ const blankCountInput = document.getElementById("blankCount");
 let readings  = [];
 async function loadSentences() {
 
-    const response = await fetch("./data/Readings.csv");
+    const response = await fetch("Readings.csv");
 
     const text = await response.text();
 
