@@ -58,8 +58,12 @@ h1{
 
 .sentenceBox{
 
+    height:60vh;
+
     border:1px solid #ddd;
+
     border-radius:8px;
+
     margin-bottom:20px;
 
 }
