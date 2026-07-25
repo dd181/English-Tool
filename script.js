@@ -10,6 +10,8 @@ async function loadReadings() {
 
     readings = await response.json();
 
+    console.log(readings);
+
 }
 
 let currentIndex = 0;
@@ -133,7 +135,7 @@ function nextSentence() {
     answerVisible = false;
 
     currentBlankSentence = randomBlank(
-    readings[currentIndex].sentence
+    readings[currentIndex].content
 );
 
     render();
@@ -150,7 +152,7 @@ function previousSentence() {
     answerVisible = false;
 
     currentBlankSentence = randomBlank(
-        readings[currentIndex].sentence
+        readings[currentIndex].content
     );
 
     render();
@@ -174,7 +176,7 @@ showButton.onclick = showAnswer;
 blankCountInput.onchange = () => {
 
     currentBlankSentence =
-        randomBlank(readings[currentIndex].sentence);
+        randomBlank(readings[currentIndex].content);
 
     render();
 
