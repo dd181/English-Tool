@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>English Blank</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+    <h1>English Blank</h1>
+
+    <div class="info">
+
+        <div>
+            <strong>Document :</strong>
+            <span id="document">THE BOY NEXT DOOR</span>
+        </div>
+
+        <div>
+            <strong>Sentence :</strong>
+            <span id="progress">1 / 4</span>
+        </div>
+
+    </div>
+
+    <div class="sentenceBox">
+
+        <p id="sentence"></p>
+
+    </div>
+
+    <div class="buttons">
+
+        <button id="prevButton">◀ Previous</button>
+
+        <button id="showButton">Show Answer</button>
+
+        <button id="nextButton">Next ▶</button>
+
+    </div>
+
+    <hr>
+
+    <div class="setting">
+
+        <label>
+
+            Blank Count :
+
+            <input
+                id="blankCount"
+                type="number"
+                min="1"
+                max="10"
+                value="1">
+
+        </label>
+
+        <label>
+        Blank Style :
+    </label>
+
+    <label>
+        <input type="radio" name="blankStyle" value="fixed" checked>
+        Fixed
+    </label>
+
+    <label>
+        <input type="radio" name="blankStyle" value="length">
+        Word Length
+    </label>
+
+    </div>
+
+    <div class="setting">
+
+        <label>
+
+            <input
+                type="radio"
+                name="mode"
+                checked>
+
+            Random
+
+        </label>
+
+        <label>
+
+            <input
+                type="radio"
+                name="mode">
+
+            Verb
+
+        </label>
+
+        <label>
+
+            <input
+                type="radio"
+                name="mode">
+
+            Noun
+
+        </label>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
