@@ -1,7 +1,7 @@
 .sentenceBox {
 
     height:60vh;
-    
+
     border:1px solid #ddd;
 
     border-radius:8px;
@@ -10,13 +10,16 @@
 
     overflow:hidden;
 
+    display:flex;
+
+    flex-direction:column;
+
 }
+
 
 #sentence {
 
-    height:100%;
-
-    width:100%;
+    flex:1;
 
     overflow-y:auto;
 
@@ -29,8 +32,6 @@
     line-height:1.8;
 
     white-space:pre-line;
-
-    padding-bottom:40px;
 
 }
 
