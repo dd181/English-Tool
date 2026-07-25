@@ -1,13 +1,17 @@
 #sentence {
-    font-size: clamp(8px, 2vw, 16px);
-    line-height: 1.8;
 
-    height: 60vh;
-    overflow-y: auto;
+    height:100%;
 
-    padding: 20px;
+    overflow-y:auto;
 
-    white-space: pre-line;
+    padding:20px;
+
+    font-size: clamp(16px, 2vw, 28px);
+
+    line-height:1.8;
+
+    white-space:pre-line;
+
 }
 
 body{
@@ -52,17 +56,11 @@ h1{
 
 .sentenceBox{
 
-    min-height:180px;
+    height:60vh;
 
     border:1px solid #ddd;
 
     border-radius:8px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
 
     margin-bottom:20px;
 
