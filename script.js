@@ -3,12 +3,23 @@ const blankStyle =
 const progress = document.getElementById("progress");
 const blankCountInput = document.getElementById("blankCount");
 
-const sentences = [
-    { sentence: "I have never seen anything like this." },
-    { sentence: "She was looking for her phone." },
-    { sentence: "It would have been impossible without you." },
-    { sentence: "Please don't forget to call me." }
-];
+let sentences = [];
+async function loadSentences() {
+
+    const response = await fetch("./data/Sentences.csv");
+
+    const text = await response.text();
+
+    const lines = text.split("\n");
+
+    sentences = lines
+        .slice(1)
+        .filter(line => line.trim() !== "")
+        .map(line => ({
+            sentence: line.trim()
+        }));
+
+}
 
 let currentIndex = 0;
 let answerVisible = false;
@@ -171,22 +182,29 @@ blankCountInput.onchange = () => {
 
 };
 
-currentBlankSentence = randomBlank(
-    sentences[currentIndex].sentence
-);
+async function init() {
 
-for (const radio of blankStyle) {
+    await loadSentences();
 
-    radio.onchange = () => {
+    currentBlankSentence =
+        randomBlank(sentences[currentIndex].sentence);
 
-        currentBlankSentence =
-            randomBlank(sentences[currentIndex].sentence);
+    for (const radio of blankStyle) {
 
-        render();
+        radio.onchange = () => {
 
-    };
+            currentBlankSentence =
+                randomBlank(sentences[currentIndex].sentence);
+
+            render();
+
+        };
+
+    }
+
+    render();
 
 }
 
 
-render();
+init();
