@@ -9,9 +9,7 @@ async function loadReadings() {
     const response = await fetch("./data/readings.json");
 
     readings = await response.json();
-
-    console.log(readings);
-
+    
 }
 
 let currentIndex = 0;
