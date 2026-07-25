@@ -1,16 +1,18 @@
 #sentence {
 
-    height:100%;
+    margin: 0;
 
-    overflow-y:auto;
+    font-size: 20px;
 
-    padding:20px;
+    line-height: 1.8;
 
-    font-size: clamp(4px, 2vw, 8px);
+    height: 60vh;
 
-    line-height:1.8;
+    overflow-y: auto;
 
-    white-space:pre-line;
+    padding: 20px;
+
+    white-space: pre-line;
 
 }
 
@@ -95,6 +97,3 @@ button{
 
 }
 
-#sentence {
-    font-size: 50px !important;
-}
