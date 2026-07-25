@@ -3,20 +3,20 @@ const blankStyle =
 const progress = document.getElementById("progress");
 const blankCountInput = document.getElementById("blankCount");
 
-let sentences = [];
+let readings  = [];
 async function loadSentences() {
 
-    const response = await fetch("./data/Sentences.csv");
+    const response = await fetch("./data/Readings.csv");
 
     const text = await response.text();
 
     const lines = text.split("\n");
 
-    sentences = lines
+    readings = lines
         .slice(1)
         .filter(line => line.trim() !== "")
         .map(line => ({
-            sentence: line.trim()
+            content: line.trim()
         }));
 
 }
@@ -108,13 +108,13 @@ else {
 
 function render() {
     progress.textContent =
-    (currentIndex + 1) + " / " + sentences.length;
+(currentIndex + 1) + " / " + readings.length;
 
-    const currentSentence = sentences[currentIndex].sentence;
+    const currentSentence = readings[currentIndex].content;
 
     if (answerVisible) {
 
-        sentenceElement.textContent = currentSentence;
+        sentenceElement.textContent = currentReading;
 
     } else {
 
@@ -128,14 +128,14 @@ function nextSentence() {
 
     currentIndex++;
 
-    if (currentIndex >= sentences.length) {
+    if (currentIndex >= readings.length) {
         currentIndex = 0;
     }
 
     answerVisible = false;
 
     currentBlankSentence = randomBlank(
-    sentences[currentIndex].sentence
+    readings[currentIndex].sentence
 );
 
     render();
@@ -146,13 +146,13 @@ function previousSentence() {
     currentIndex--;
 
     if (currentIndex < 0) {
-        currentIndex = sentences.length - 1;
+        currentIndex = readings.length - 1;
     }
 
     answerVisible = false;
 
     currentBlankSentence = randomBlank(
-        sentences[currentIndex].sentence
+        readings[currentIndex].sentence
     );
 
     render();
@@ -176,7 +176,7 @@ showButton.onclick = showAnswer;
 blankCountInput.onchange = () => {
 
     currentBlankSentence =
-        randomBlank(sentences[currentIndex].sentence);
+        randomBlank(readings[currentIndex].sentence);
 
     render();
 
@@ -187,14 +187,14 @@ async function init() {
     await loadSentences();
 
     currentBlankSentence =
-        randomBlank(sentences[currentIndex].sentence);
+        randomBlank(readings[currentIndex].sentence);
 
     for (const radio of blankStyle) {
 
         radio.onchange = () => {
 
             currentBlankSentence =
-                randomBlank(sentences[currentIndex].sentence);
+                randomBlank(readings[currentIndex].sentence);
 
             render();
 
