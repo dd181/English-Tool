@@ -1,7 +1,8 @@
 .sentenceBox {
 
-    min-height:500px;
-
+    height:60vh;
+    min-height:800px;
+    
     border:1px solid #ddd;
 
     border-radius:8px;
