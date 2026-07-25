@@ -1,4 +1,12 @@
 #sentence {
+    font-size: clamp(16px, 2vw, 24px);
+    line-height: 1.8;
+
+    height: 60vh;
+    overflow-y: auto;
+
+    padding: 20px;
+
     white-space: pre-line;
 }
 
