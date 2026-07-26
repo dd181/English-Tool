@@ -1,7 +1,7 @@
 const blankStyle =
     document.getElementsByName("blankStyle");
 const progress = document.getElementById("progress");
-const blankCountInput = document.getElementById("blankCount");
+const blankRatioInput = document.getElementById("blankRatio");
 const filters = document.getElementsByName("filter");
 const filterWords = {
 
@@ -84,6 +84,25 @@ function getFilters(){
 
 }
 
+function getExcludedWords(){
+
+    let excluded = [];
+
+    const selectedFilters = getFilters();
+
+
+    for(const filter of selectedFilters){
+
+        excluded.push(
+            ...filterWords[filter]
+        );
+
+    }
+
+    return excluded;
+
+}
+
 function getBlankStyle() {
 
     for (const radio of blankStyle) {
@@ -104,19 +123,38 @@ function randomBlank(text) {
 
     const candidates = [];
 
-    for (let i = 0; i < words.length; i++) {
+    const excludedWords = getExcludedWords();
 
-        const word = words[i].replace(/[.,!?]/g, "");
 
-        if (word.length >= 3) {
-            candidates.push(i);
-        }
+for (let i = 0; i < words.length; i++) {
+
+    const word =
+        words[i].replace(/[.,!?"]/g, "");
+
+    const lowerWord =
+        word.toLowerCase();
+
+
+    if (
+        word.length >= 3 &&
+        !excludedWords.includes(lowerWord)
+    ) {
+
+        candidates.push(i);
+
     }
 
-    let blankCount = parseInt(blankCountInput.value);
+}
 
-    if (blankCount > candidates.length) {
-        blankCount = candidates.length;
+    const ratio =
+        parseInt(blankRatioInput.value) / 100;
+
+
+    let blankCount =
+        Math.floor(words.length * ratio);
+
+    if (blankCount  > candidates.length) {
+        blankCount  = candidates.length;
     }
 
     // 후보 섞기(Fisher-Yates Shuffle)
@@ -233,7 +271,7 @@ prevButton.onclick = previousSentence;
 nextButton.onclick = nextSentence;
 showButton.onclick = showAnswer;
 
-blankCountInput.onchange = () => {
+blankRatioInput.oninput  = () => {
 
     currentBlankSentence =
         randomBlank(readings[currentIndex].content);
@@ -241,6 +279,19 @@ blankCountInput.onchange = () => {
     render();
 
 };
+
+for(const filter of filters){
+
+    filter.onchange = () => {
+
+        currentBlankSentence =
+            randomBlank(readings[currentIndex].content);
+
+        render();
+
+    };
+
+}
 
 async function init() {
 
