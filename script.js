@@ -2,6 +2,50 @@ const blankStyle =
     document.getElementsByName("blankStyle");
 const progress = document.getElementById("progress");
 const blankCountInput = document.getElementById("blankCount");
+const filters = document.getElementsByName("filter");
+const filterWords = {
+
+    article:[
+        "a",
+        "an",
+        "the"
+    ],
+
+    pronoun:[
+        "i",
+        "you",
+        "he",
+        "she",
+        "it",
+        "we",
+        "they",
+        "this",
+        "that",
+        "these",
+        "those"
+    ],
+
+    preposition:[
+        "in",
+        "on",
+        "at",
+        "to",
+        "from",
+        "with",
+        "for",
+        "of",
+        "by"
+    ],
+
+    conjunction:[
+        "and",
+        "or",
+        "but",
+        "so",
+        "because"
+    ]
+
+};
 
 let readings  = [];
 async function loadReadings() {
@@ -24,6 +68,21 @@ const prevButton = document.getElementById("prevButton");
 const nextButton = document.getElementById("nextButton");
 const showButton = document.getElementById("showButton");
 
+function getFilters(){
+
+    let selected = [];
+
+    for(const filter of filters){
+
+        if(filter.checked){
+            selected.push(filter.value);
+        }
+
+    }
+
+    return selected;
+
+}
 
 function getBlankStyle() {
 
